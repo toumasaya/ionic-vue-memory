@@ -1,38 +1,18 @@
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>All Memories</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item>Luffy</ion-item>
-        <ion-item>Salt</ion-item>
-        <ion-item>Toumasaya</ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-page>
+  <base-layout pageTitle="All Memories">
+    <ion-list>
+      <ion-item router-link="/memories/1">Luffy</ion-item>
+      <ion-item>Salt</ion-item>
+      <ion-item>Toumasaya</ion-item>
+    </ion-list>
+  </base-layout>
 </template>
 
 <script>
-import {
-  IonHeader,
-  IonToolbar,
-  IonPage,
-  IonTitle,
-  IonContent,
-  IonList,
-  IonItem,
-} from "@ionic/vue";
+import { IonList, IonItem } from "@ionic/vue";
 
 export default {
   components: {
-    IonHeader,
-    IonPage,
-    IonTitle,
-    IonContent,
-    IonToolbar,
     IonList,
     IonItem,
   },

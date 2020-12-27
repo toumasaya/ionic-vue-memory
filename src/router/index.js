@@ -15,6 +15,10 @@ const routes = [
     path: "/memories/:id",
     component: () => import("../pages/MemoryDetailsPage"),
   },
+  {
+    path: "/memories/add",
+    component: () => import("../pages/AddMemoryPage"),
+  },
 ];
 
 const router = createRouter({

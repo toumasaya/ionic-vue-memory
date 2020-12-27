@@ -25,6 +25,23 @@ const store = createStore({
       ],
     };
   },
+  mutations: {
+    SAVE_MEMORY(state, memoryData) {
+      const newMemoryData = {
+        id: new Date().toISOString(),
+        title: memoryData.title,
+        image: memoryData.imageUrl,
+        description: memoryData.description,
+      };
+
+      state.memories.unshift(newMemoryData);
+    },
+  },
+  actions: {
+    addMemory(context, memoryData) {
+      context.commit("SAVE_MEMORY", memoryData);
+    },
+  },
   getters: {
     memories(state) {
       return state.memories;

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Vue Memory</string>
+    <string name="title_activity_main">Vue Memory</string>
+    <string name="package_name">com.whm.vuememories</string>
+    <string name="custom_url_scheme">com.whm.vuememories</string>
+</resources>

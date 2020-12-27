@@ -6,8 +6,13 @@
         <ion-input type="text" required v-model="enteredTitle" />
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Image URL</ion-label>
-        <ion-input type="text" required v-model="enteredImageUrl" />
+        <ion-thumbnail>
+          <img :src="previewImageUrl" />
+        </ion-thumbnail>
+        <ion-button type="button" fill="clear" @click="takePhoto">
+          <ion-icon slot="start" :icon="camera"></ion-icon>
+          Take photo
+        </ion-button>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Description</ion-label>
@@ -26,7 +31,14 @@ import {
   IonInput,
   IonTextarea,
   IonButton,
+  IonThumbnail,
+  IonIcon,
 } from "@ionic/vue";
+import { camera } from "ionicons/icons";
+import { Plugins, CameraResultType, CameraSource } from "@capacitor/core";
+
+const { Camera } = Plugins;
+
 export default {
   emits: ["on-save-memory"],
   data() {
@@ -34,6 +46,8 @@ export default {
       enteredTitle: "",
       enteredImageUrl: "",
       enteredDescription: "",
+      previewImageUrl: null,
+      camera,
     };
   },
   components: {
@@ -43,8 +57,19 @@ export default {
     IonInput,
     IonTextarea,
     IonButton,
+    IonThumbnail,
+    IonIcon,
   },
   methods: {
+    async takePhoto() {
+      const photo = await Camera.getPhoto({
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+        quality: 60,
+      });
+
+      this.previewImageUrl = photo.webPath;
+    },
     submitForm() {
       const memoryData = {
         title: this.enteredTitle,

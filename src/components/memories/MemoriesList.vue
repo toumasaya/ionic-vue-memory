@@ -1,22 +1,22 @@
 <template>
   <ion-list>
-    <memories-item
+    <memory-list-item
       v-for="memory in memories"
       :key="memory.id"
       :memory="memory"
-    ></memories-item>
+    ></memory-list-item>
   </ion-list>
 </template>
 
 <script>
 import { IonList } from "@ionic/vue";
-import MemoriesItem from "./MemoriesItem";
+import MemoryListItem from "./MemoryListItem";
 
 export default {
   props: ["memories"],
   components: {
     IonList,
-    MemoriesItem,
+    MemoryListItem,
   },
 };
 </script>
